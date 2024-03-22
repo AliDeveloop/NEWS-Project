@@ -469,3 +469,85 @@ td {
     background: var(--darkwhite);
   }
 }
+
+.section {
+  width: 100%;
+  min-height: 200px;
+  margin: 0 20%;
+}
+.news-page {
+  display: inline-block;
+  background-color: var(--darkwhite);
+  width: 80%;
+  transform: translateX(+12%);
+  height: auto;
+  border: solid 0.1rem var(--silver);
+  margin: 1rem auto;
+  margin-top: 1rem;
+  max-width: 80%;
+}
+.news-page p {
+  max-width: 44rem;
+}
+/* ************************** */
+/* ************************** */
+/* ************************** */
+/* ************************** */
+/* ************************** */
+/* ************************** */
+/* ************************** */
+/* ! PANEL */
+/* ? nav panel */
+.navpanel {
+  background: var(--black);
+}
+.panel-welocome {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+.panel-box {
+  background: var(--darkwhite);
+  box-shadow: var(--dark-shadow);
+  height: 50%;
+  width: 50%;
+  max-width: 1200px;
+}
+.panel-titr {
+  margin: 1%;
+}
+.panel-box-title {
+  margin: 2.5% 5% 0;
+}
+.box-title {
+  display: block;
+  width: 100%;
+  margin-bottom: 2.5%;
+}
+.box-title:hover {
+  color: var(--darkgray);
+}
+@media screen and (max-width: 850px) {
+  .panel-box {
+    width: 80%;
+  }
+}
+.panel-box-d {
+  display: flex;
+  flex-direction: row;
+  color: #0b090a;
+  margin: 2.5% 5% 0;
+  flex-wrap: wrap;
+}
+.d-box {
+  color: #0b090a;
+  padding: 1rem;
+}
+.d-box:hover {
+  background: var(--red);
+  color: var(--withe);
+}
+
+/* ? end nav panel */
