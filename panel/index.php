@@ -35,21 +35,21 @@
       <nav class="navbar navpanel">
         <div class="navbar-center">
           <div class="nav-header">
-            <h3>پنل کاربری</h3>
+            <h3>همدان نیوز | مدیریت</h3>
             <button type="button" class="nav-toggle" id="nav-toggle">
               <i class="bi bi-list"></i>
             </button>
           </div>
           <ul class="nav-links" id="nav-links">
-            <li><a class="nav-link" href="#"> پنل </a></li>
-            <li><a class="nav-link" href="#"> خبر جدید </a></li>
-            <li><a class="nav-link" href="#"> مشاهده اخبار </a></li>
-            <li><a class="nav-link" href="#"> تبلیغات </a></li>
+            <li><a class="nav-link" href="index.html"> پنل </a></li>
+            <li><a class="nav-link" href="new-news.html"> خبر جدید </a></li>
             <li>
-              <a class="nav-link" href="#"> اعضای سایت </a>
+              <a class="nav-link" href="manage-news.html"> مشاهده اخبار </a>
             </li>
+            <li><a class="nav-link" href="new-ads.html"> تبلیغات </a></li>
+
             <li>
-              <a class="nav-link" href="#"> بازگشت به محیط سایت </a>
+              <a class="nav-link" href="../index.html"> بازگشت به محیط سایت </a>
             </li>
           </ul>
         </div>
@@ -65,12 +65,12 @@
           </div>
           <h2 class="titr panel-titr">دسترسی سریع</h2>
           <div class="panel-box-d">
-            <a href="#" class="d-box">خبر جدید </a>
-            <a href="#" class="d-box">مشاهده اخبار </a>
-            <a href="#" class="d-box">ویرایش خبر </a>
-            <a href="#" class="d-box"> تبلیغات </a>
-            <a href="#" class="d-box"> ادمین ها </a>
-            <a href="#" class="d-box"> صفحه اصلی </a>
+            <a href="new-news.html" class="d-box">خبر جدید </a>
+            <a href="manage-news.html" class="d-box">مشاهده اخبار </a>
+            <a href="manage-news.html" class="d-box">ویرایش خبر </a>
+            <a href="new-ads.html" class="d-box"> تبلیغات </a>
+
+            <a href="../index.html" class="d-box"> صفحه اصلی </a>
           </div>
         </div>
       </div>

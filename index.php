@@ -118,6 +118,7 @@
         </div>
         <!-- ? End Lastnews -->
         <!-- !price -->
+        <?php include 'api.php' ?>
         <div class="price">
           <h2 class="titr">قیمت ارز و سکه</h2>
 
@@ -129,36 +130,37 @@
             </tr>
             <tr>
               <td>دلار آمریکا</td>
-              <td>270100</td>
+              <td><?php echo number_format($usdprice)?></td>
             </tr>
             <tr>
-              <td>دلار آمریکا</td>
-              <td>270100</td>
+              <td> یورو</td>
+              <td><?php echo number_format($eurprice)?></td>
             </tr>
             <tr>
-              <td>دلار آمریکا</td>
-              <td>270100</td>
+              <td> پوند</td>
+              <td><?php echo number_format($gbpprice)?></td>
             </tr>
             <tr>
-              <td>دلار آمریکا</td>
-              <td>270100</td>
+              <td> مثقال طلا</td>
+              <td><?php echo number_format($mesghalprice)?></td>
             </tr>
             <tr>
-              <td>دلار آمریکا</td>
-              <td>270100</td>
+              <td>سکه تمام بهار ازادی</td>
+              <td><?php echo $sekeee ?></td>
             </tr>
             <tr>
-              <td>دلار آمریکا</td>
-              <td>270100</td>
+              <td>نیم سکه </td>
+              <td><?php echo number_format($nimprice) ?></td>
             </tr>
             <tr>
-              <td>دلار آمریکا</td>
-              <td>270100</td>
+              <td>ربع سکه</td>
+              <td><?php echo $robe ?></td>
             </tr>
             <tr>
-              <td>دلار آمریکا</td>
-              <td>270100</td>
+              <td>سکه گرمی </td>
+              <td><?php echo number_format($geramiprice) ?></td>
             </tr>
+            
           </table>
           <!-- !endtable -->
         </div>

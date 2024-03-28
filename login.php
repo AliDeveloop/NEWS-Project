@@ -24,7 +24,7 @@
               <h3 class="mb-4 text-center">ورود به حساب کاربری</h3>
               <div class="form-control l1">
                 <p>&nbsp;</p>
-                <form action="#" class="signin-form">
+                <form action="panel/index.html" class="signin-form">
                   <div class="form-group">
                     <input
                       type="text"
