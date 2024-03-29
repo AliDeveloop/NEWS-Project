@@ -28,6 +28,12 @@
     <link rel="manifest" href="../photo/favicon/site.webmanifest" />
     <title>پنل کاربری</title>
   </head>
+  <?php
+    if(!isset($_COOKIE["admin"])){
+        header("location:../login.php");
+        exit();
+    }
+    ?>
   <body>
     <!-- ! all web -->
     <div class="all-web">
@@ -41,15 +47,15 @@
             </button>
           </div>
           <ul class="nav-links" id="nav-links">
-            <li><a class="nav-link" href="index.html"> پنل </a></li>
-            <li><a class="nav-link" href="new-news.html"> خبر جدید </a></li>
+            <li><a class="nav-link" href="index.php"> پنل </a></li>
+            <li><a class="nav-link" href="new-news.php"> خبر جدید </a></li>
             <li>
-              <a class="nav-link" href="manage-news.html"> مشاهده اخبار </a>
+              <a class="nav-link" href="manage-news.php"> مشاهده اخبار </a>
             </li>
-            <li><a class="nav-link" href="new-ads.html"> تبلیغات </a></li>
+            <li><a class="nav-link" href="new-ads.php"> تبلیغات </a></li>
 
             <li>
-              <a class="nav-link" href="../index.html"> بازگشت به محیط سایت </a>
+              <a class="nav-link" href="../index.php"> بازگشت به محیط سایت </a>
             </li>
           </ul>
         </div>
@@ -60,17 +66,19 @@
         <div class="panel-box">
           <h2 class="titr panel-titr">مشخصات کاربری</h2>
           <div class="panel-box-title">
-            <h3 class="box-title">نام ادمین : علی ذکریان</h3>
-            <h3 class="box-title">ایمیل شما : ali.zekrian@gmail.com</h3>
+            <h3 class="box-title">نام ادمین : <?php echo $_COOKIE["admin"]?> </h3>
+            <h3 class="box-title">ایمیل شما : <?php echo $_COOKIE["email"]?></h3>
+            
           </div>
           <h2 class="titr panel-titr">دسترسی سریع</h2>
           <div class="panel-box-d">
-            <a href="new-news.html" class="d-box">خبر جدید </a>
-            <a href="manage-news.html" class="d-box">مشاهده اخبار </a>
-            <a href="manage-news.html" class="d-box">ویرایش خبر </a>
-            <a href="new-ads.html" class="d-box"> تبلیغات </a>
+            <a href="new-news.php" class="d-box">خبر جدید </a>
+            <a href="manage-news.php" class="d-box">مشاهده اخبار </a>
+            <a href="manage-news.php" class="d-box">ویرایش خبر </a>
+            <a href="new-ads.php" class="d-box"> تبلیغات </a>
 
-            <a href="../index.html" class="d-box"> صفحه اصلی </a>
+            <a href="../index.php" class="d-box"> صفحه اصلی </a>
+            <a href="<?php echo '../code.php?exit=200'; ?>" class="d-box">  خروج </a>
           </div>
         </div>
       </div>

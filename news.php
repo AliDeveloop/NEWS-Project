@@ -37,12 +37,12 @@
             </button>
           </div>
           <ul class="nav-links" id="nav-links">
-            <li><a class="nav-link" href="index.html">صفحه اصلی </a></li>
-            <li><a class="nav-link" href="sport.html"> ورزشی </a></li>
-            <li><a class="nav-link" href="political.html"> سیاسی </a></li>
-            <li><a class="nav-link" href="Economic.html"> اقتصادی </a></li>
+            <li><a class="nav-link" href="index.php">صفحه اصلی </a></li>
+            <li><a class="nav-link" href="sport.php"> ورزشی </a></li>
+            <li><a class="nav-link" href="political.php"> سیاسی </a></li>
+            <li><a class="nav-link" href="Economic.php"> اقتصادی </a></li>
             <li>
-              <a class="nav-link" href="login.html">ورود به پنل کاربری</a>
+              <a class="nav-link" href="login.php">ورود به پنل کاربری</a>
             </li>
           </ul>
         </div>
@@ -92,11 +92,11 @@
           <div class="footer-col">
             <h4>صفحات سایت</h4>
             <ul class="links">
-              <li><a href="index.html"> صفحه اصلی</a></li>
-              <li><a href="sport.html">ورزشی</a></li>
-              <li><a href="political.html">سیاسی</a></li>
-              <li><a href="Economic.html">اقتصادی</a></li>
-              <li><a href="login.html">ورود به حساب کاربری</a></li>
+              <li><a href="index.php"> صفحه اصلی</a></li>
+              <li><a href="sport.php">ورزشی</a></li>
+              <li><a href="political.php">سیاسی</a></li>
+              <li><a href="Economic.php">اقتصادی</a></li>
+              <li><a href="login.php">ورود به حساب کاربری</a></li>
             </ul>
           </div>
           <div class="footer-col">
@@ -141,4 +141,4 @@
     </div>
     <!-- ?End All Screen -->
   </body>
-</html>
+</php>

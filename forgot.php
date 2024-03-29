@@ -23,13 +23,21 @@
             <div class="login-wrap p-0">
               <h3 class="mb-4 text-center">فراموشی رمز عبور</h3>
               <div class="form-control l1">
-                <p>&nbsp;</p>
-                <form action="#" class="signin-form">
+              <p><?php
+        if(isset($_GET["sucses"])){
+            echo"<center><font color=Green>  رمز عبور شما با موفقیت برای شما ایمیل شد </font></center>";
+        }
+        if(isset($_GET["faild"])){
+            echo"<center><font color=red> بازیابی رمز عبور با مشکل مواجه شد</font></center>";
+        }
+        ?></p>
+                <form method="Post" action="code.php" class="signin-form">
                   <div class="form-group">
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="نام کاربری"
+                      placeholder="نام و نام خانوادگی"
+                      name="forgetname"
                       required
                     />
                   </div>
@@ -38,6 +46,7 @@
                       type="email"
                       class="form-control"
                       placeholder="ایمیل "
+                      name="forgetemal"
                       required
                     />
                   </div>
@@ -45,18 +54,19 @@
                     <button
                       type="submit"
                       class="form-control btn btn-primary submit px-3"
+                      name="btnforget"
                     >
                       ورود
                     </button>
                   </div>
                   <div class="form-group d-md-flex">
                     <div class="w-50 text-md-right">
-                      <a href="login.html" style="color: #fff">
+                      <a href="login.php" style="color: #fff">
                         بازگشت به صفحه لاگین
                       </a>
                     </div>
                     <div class="w-50 text-md-left">
-                      <a href="index.html" style="color: #fff"
+                      <a href="index.php" style="color: #fff"
                         >بازگشت به صفحه اصلی
                       </a>
                     </div>

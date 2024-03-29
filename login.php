@@ -15,6 +15,13 @@
 
     <link rel="stylesheet" href="Style/stylelogin.css" />
   </head>
+  <!-- <?php if($_COOKIE['admin']){
+    header("location:panel/index.php");
+} 
+else{
+
+}
+?> -->
   <body class="img js-fullheight" style="background-image: url(photo/bg.jpg)">
     <section class="ftco-section">
       <div class="container">
@@ -23,13 +30,22 @@
             <div class="login-wrap p-0">
               <h3 class="mb-4 text-center">ورود به حساب کاربری</h3>
               <div class="form-control l1">
-                <p>&nbsp;</p>
-                <form action="panel/index.html" class="signin-form">
+                <p><?php
+        if(isset($_GET["empty"])){
+            echo"<center><font color=red>مقادیر فیلد ها باید پر شود </font></center>";
+        }
+        if(isset($_GET["error"])){
+            echo"<center><font color=red>نام کاربری یا رمز عبور اشتباه است</font></center>";
+        }
+        ?></p>
+                <form method="Post" action="code.php" class="signin-form">
                   <div class="form-group">
+                  
                     <input
-                      type="text"
+                      type="email"
+                      name="loginemail"
                       class="form-control"
-                      placeholder="نام کاربری"
+                      placeholder="ایمیل کاربری"
                       required
                     />
                   </div>
@@ -37,6 +53,7 @@
                     <input
                       id="password-field"
                       type="password"
+                      name="loginpass"
                       class="form-control"
                       placeholder="رمز عبور"
                       required
@@ -44,6 +61,7 @@
                   </div>
                   <div class="form-group">
                     <button
+                    name="btnlogin"
                       type="submit"
                       class="form-control btn btn-primary submit px-3"
                     >
@@ -51,13 +69,8 @@
                     </button>
                   </div>
                   <div class="form-group d-md-flex">
-                    <div class="w-50 text-md-right">
-                      <a href="forgot.html" style="color: #fff"
-                        >فراموشی رمز عبور
-                      </a>
-                    </div>
                     <div class="w-50 text-md-left">
-                      <a href="index.html" style="color: #fff"
+                      <a href="index.php" style="color: #fff"
                         >بازگشت به صفحه اصلی
                       </a>
                     </div>

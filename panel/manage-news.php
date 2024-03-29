@@ -28,6 +28,12 @@
     <link rel="manifest" href="../photo/favicon/site.webmanifest" />
     <title>مشاهده اخبار</title>
   </head>
+  <?php
+    if(!isset($_COOKIE["admin"])){
+        header("location:../login.php");
+        exit();
+    }
+    ?>
   <body>
     <div class="all-web">
       <!-- ! Nav -->
@@ -40,15 +46,15 @@
             </button>
           </div>
           <ul class="nav-links" id="nav-links">
-            <li><a class="nav-link" href="index.html"> پنل </a></li>
-            <li><a class="nav-link" href="new-news.html"> خبر جدید </a></li>
+            <li><a class="nav-link" href="index.php"> پنل </a></li>
+            <li><a class="nav-link" href="new-news.php"> خبر جدید </a></li>
             <li>
-              <a class="nav-link" href="manage-news.html"> مشاهده اخبار </a>
+              <a class="nav-link" href="manage-news.php"> مشاهده اخبار </a>
             </li>
-            <li><a class="nav-link" href="new-ads.html"> تبلیغات </a></li>
+            <li><a class="nav-link" href="new-ads.php"> تبلیغات </a></li>
 
             <li>
-              <a class="nav-link" href="../index.html"> بازگشت به محیط سایت </a>
+              <a class="nav-link" href="../index.php"> بازگشت به محیط سایت </a>
             </li>
           </ul>
         </div>
