@@ -41,110 +41,134 @@ if (isset($_GET["exit"])) {
 // ?---------------------------
 // ? END ADMIN LOGOUT
 // ?---------------------------
+
+if (isset($_POST['btnsend'])) {
+    if (empty($_FILES['files'])) {
+        echo 'File is Empty';
+    } else {
+        $filename = $_FILES['files']['name'];
+        $fileext = pathinfo($filename, PATHINFO_EXTENSION);
+        $filesize = $_FILES['files']['size'];
+        $filetype = $_FILES['files']['type'];
+        $filetmp = $_FILES['files']['tmp_name'];
+        if (($filetype == 'image/png') || ($filetype == 'image/jpg') || ($filetype == 'image/jpeg') || ($filetype == 'image/svg')) {
+            $uniq = time() . uniqid(rand());
+            $path = "photo/" . $uniq . "." . $fileext;
+            if (move_uploaded_file($filetmp, $path)) {
+
+            } else {
+                echo "File NotSaved";
+            }
+        } else {
+            echo "type file is not allowd";
+        }
+
+    }
+}
 // *-------------------------------
 // !---------------------------
-// ! NEW NEWS
+// ! upload  Sport
 // !---------------------------
-
-if (isset($_POST['btnsendpost'])) {
-    if (empty($_POST['title']) || empty($_FILES['file1']) || empty($_POST['content']) || empty($_POST['news']) || empty($_POST['breaking']))
-        header('Location:panel/new-news.php?empty=1000');
-    exit();
-} else {
-    $title = $_POST['title'];
-    $content = $_POST['content'];
-    $news = $_POST['news'];
-    $breaking = $_POST['breaking'];
-    $image;
-    $file1 = $_FILES['file1']['name'];
-    $fileext = pathinfo($file1, PATHINFO_EXTENSION);
-    $filesize = $_FILES['file1']['size'];
-    $filetype = $_FILES['file1']['type'];
-    $filetemp = $_FILES['file1']['tmp_name'];
-    if (($filetype == 'image/png') || ($filetype == 'image/jpg') || ($filetype == 'image/bmp') || ($filetype == 'image/jpeg')) {
-        $filesize = floor($filesize / 1024);
-        echo $filesize . "KB <br>";
-        if ($filesize > 2048) {
-            header('Location:admin/sendpost.php?size=22000');
+if (isset($_POST['btnsportsend'])) {
+    if (empty($_FILES['files']) || empty($_POST['title']) || empty($_POST['content'])) {
+        header('location:panel/sport.php?empty=1000');
+        exit();
+    } else {
+        $title = $_POST['title'];
+        $content = $_POST['content'];
+        $image;
+        $filename = $_FILES['files']['name'];
+        $fileext = pathinfo($filename, PATHINFO_EXTENSION);
+        $filesize = $_FILES['files']['size'];
+        $filetype = $_FILES['files']['type'];
+        $filetmp = $_FILES['files']['tmp_name'];
+        if (($filetype == 'image/png') || ($filetype == 'image/jpg') || ($filetype == 'image/jpeg') || ($filetype == 'image/svg')) {
+            $uniq = time() . uniqid(rand());
+            $path = "photo/" . $uniq . "." . $fileext;
+            if (move_uploaded_file($filetmp, $path)) {
+                $image = $path;
+            } else {
+                header('location:panel/sport.php?noinsert=2000');
+                exit();
+            }
+        } else {
+            header('location:panel/sport.php?errorintype=3000');
+            exit();
+        }
+        // ! sql
+        $query = "INSERT INTO `sport` (`id`, `title`, `image`, `content`, `Category`) VALUES (NULL, '" . $title . "', '" . $image . "', '" . $content . "', '');";
+        $result = mysqli_query($link, $query);
+        if ($result) {
+            header('location:panel/sport.php?ok=5000');
             exit();
         } else {
+            header('location:panel/sport.php?noinsert=2000');
+            exit();
+        }
+    }
+
+
+}
+// !---------------------------
+// ! end upload  Sport
+// !---------------------------
+
+// !---------------------------
+// !  delete  Sport
+// !---------------------------
+if (isset($_GET['sportid'])) {
+    $postid = $_GET['sportid'];
+    $query = "DELETE FROM `sport` WHERE `id` = '$postid';";
+    $result = mysqli_query($link, $query);
+    if ($result) {
+        header('Location:panel/sport.php?delok=5000');
+        exit();
+    } else {
+        header('Location:panel/sport.php?delerror=6000');
+        exit();
+    }
+}
+// !---------------------------
+// !  end delete  Sport
+// !---------------------------
+// ?
+// ? Update sport
+// ?
+if (isset($_POST['btnsportupdate'])) {
+    if (empty($_POST['title']) || empty($_POST['content'])) {
+        header('Location:panel/sport.php?empty=1000');
+        exit();
+    } else {
+        $postid = $_GET['postid'];
+        $title = $_POST['title'];
+        $content = $_POST['content'];
+        $image;
+        $filetemp = $_FILES['files']['tmp_name'];
+        if (empty($filetemp)) {
+            $query = "UPDATE `sport` SET `title`='" . $title . "',`content`='" . $content . "' WHERE `sport`.`id` = $postid;";
+        } else {
+            $file1 = $_FILES['files']['name'];
+            $fileext = pathinfo($file1, PATHINFO_EXTENSION);
+            $filetype = $_FILES['files']['type'];
+            $filetemp = $_FILES['files']['tmp_name'];
             $uniq = time() . uniqid(rand());
-            $path = "../photo/" . $uniq . "." . $fileext;
+            $path = "photo/" . $uniq . "." . $fileext;
             if (move_uploaded_file($filetemp, $path)) {
                 $image = $path;
             } else {
-                header('Location:panel/new-news.php?errorinupload=3000');
+                header('Location:panel/sport.php?errorinupload=3000');
                 exit();
             }
+            $query = "UPDATE `sport` SET `title`='" . $title . "',`content`='" . $content . "',`image`='" . $image . "' WHERE `sport`.`id`=$postid ;";
         }
-    } else {
-        header('Location:panel/new-news.php?errorintype=2000');
-        exit();
-    }
-    if ($breaking == 'yes') {
-        $result = mysqli_query($link, $breakingnews);
-        if ($result || $result2) {
-            header('Location:panel/new-news.php?ok=5000');
+        $result = mysqli_query($link, $query);
+        if ($result) {
+            header('Location:panel/sport.php?ok=50000');
             exit();
-        } else {
-            header('Location:panel/new-news.php?noinsert=66000');
-            exit();
-        }
-    } else {
-        if ($news == 'economic') {
-            $result = mysqli_query($link, $economic);
-            $result2 = mysqli_query($link, $lastnews);
-            if ($result || $result2) {
-                header('Location:panel/new-news.php?ok=5000');
-                exit();
-            } else {
-                header('Location:panel/new-news.php?noinsert=66000');
-                exit();
-            }
-        } elseif ($news == 'sport') {
-            $result = mysqli_query($link, $sport);
-            $result2 = mysqli_query($link, $lastnews);
-            if ($result || $result2) {
-                header('Location:panel/new-news.php?ok=5000');
-                exit();
-            } else {
-                header('Location:panel/new-news.php?noinsert=66000');
-                exit();
-            }
-        } elseif ($news == 'political') {
-            $result = mysqli_query($link, $political);
-            $result2 = mysqli_query($link, $lastnews);
-            if ($result || $result2) {
-                header('Location:panel/new-news.php?ok=5000');
-                exit();
-            } else {
-                header('Location:panel/new-news.php?noinsert=66000');
-                exit();
-            }
         }
     }
 }
-
-// ?---------------------------
-// ? END NEW NEWS
-// ?---------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// ?
+// ?end Update sport
+// ?
 ?>
