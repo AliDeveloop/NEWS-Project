@@ -10,9 +10,9 @@
             <li><a class="nav-link" href="index.php">پنل کاربری</a></li>
             <li><a class="nav-link" href="sport.php">اخبار ورزشی</a></li>
             <li>
-                <a class="nav-link" href="manage-news.php"> اخبار سیاسی </a>
+                <a class="nav-link" href="political.php"> اخبار سیاسی </a>
             </li>
-            <li><a class="nav-link" href="new-ads.php"> اخبار اقتصادی </a></li>
+            <li><a class="nav-link" href="economic.php"> اخبار اقتصادی </a></li>
 
             <li>
                 <a class="nav-link" href="../index.php"> بازگشت به محیط سایت </a>

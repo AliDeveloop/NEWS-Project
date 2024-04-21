@@ -17,7 +17,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../photo/favicon/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="../photo/favicon/favicon-16x16.png" />
     <link rel="manifest" href="../photo/favicon/site.webmanifest" />
-    <title>ویرایش خبر </title>
+    <title>ویرایش خبر اقتصادی</title>
 </head>
 
 <body>
@@ -27,12 +27,12 @@
         <!-- !end nav -->
         <div class="panel-welocome">
             <div class="panel-box post-box">
-                <h2 class="titr panel-titr">ویرایش خبر </h2>
+                <h2 class="titr panel-titr">ویرایش خبر اقتصادی</h2>
 
                 <div class="form-panel">
                     <?php
                     $postid = $_GET['postid'];
-                    $query = "SELECT * FROM `sport` where `id` =$postid;";
+                    $query = "SELECT * FROM `economic` where `id` =$postid;";
                     $result = mysqli_query($link, $query);
                     while ($row = mysqli_fetch_array($result)) {
                         ?>
@@ -48,7 +48,7 @@
                             <input class="input-form input-photo" type="file" name="files" />
                             <textarea class="input-form textarea-form" placeholder="متن خبر " name="content"
                                 required><?php echo $row['content'] ?></textarea>
-                            <input class="input-form submit-form" type="submit" name="btnsportupdate"
+                            <input class="input-form submit-form" type="submit" name="btneconomicupdate"
                                 value="بروزرسانی پست" />
                             <br />
                         </form>

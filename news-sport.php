@@ -16,7 +16,25 @@
   <!-- ? All Screen -->
   <div class="all-screen">
     <!-- ! Nav -->
-    <?php include "nav.php"; ?>
+    <nav class="navbar">
+      <div class="navbar-center">
+        <div class="nav-header">
+          <h3>همدان نیوز</h3>
+          <button type="button" class="nav-toggle" id="nav-toggle">
+            <i class="bi bi-list"></i>
+          </button>
+        </div>
+        <ul class="nav-links" id="nav-links">
+          <li><a class="nav-link" href="index.php">صفحه اصلی </a></li>
+          <li><a class="nav-link" href="sport.php"> ورزشی </a></li>
+          <li><a class="nav-link" href="political.php"> سیاسی </a></li>
+          <li><a class="nav-link" href="Economic.php"> اقتصادی </a></li>
+          <li>
+            <a class="nav-link" href="login.php">ورود به پنل کاربری</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
     <!-- !end nav -->
     <!-- *Break -->
     <div class="break">&nbsp;</div>

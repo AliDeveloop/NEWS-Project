@@ -17,7 +17,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="../photo/favicon/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="../photo/favicon/favicon-16x16.png" />
   <link rel="manifest" href="../photo/favicon/site.webmanifest" />
-  <title>خبر جدید</title>
+  <title>خبر جدید ورزشی</title>
 </head>
 
 <body>
@@ -50,7 +50,7 @@
     <!-- !end nav -->
     <div class="panel-welocome">
       <div class="panel-box post-box">
-        <h2 class="titr panel-titr">خبر جدید</h2>
+        <h2 class="titr panel-titr">خبر جدید ورزشی</h2>
         <p>
           <?php
           if (isset($_GET["empty"])) {
@@ -88,7 +88,7 @@
     <!--! manage -->
     <div class=" panel-manage">
       <div class="panel-box post-box">
-        <h2 class="titr panel-titr">مشاهده اخبار</h2>
+        <h2 class="titr panel-titr">مشاهده اخبار ورزشی</h2>
         <center>
           <?php
           if (isset($_GET["delok"])) {
@@ -99,22 +99,22 @@
           }
           ?>
           <?php
-          if (isset($_GET["empty"])) {
+          if (isset($_GET["uempty"])) {
             echo "<center><font color=red>مقادیر فیلد ها باید پر شود </font></center>";
           }
-          if (isset($_GET["size"])) {
+          if (isset($_GET["usize"])) {
             echo "<center><font color=red> حجم فایل انتخابی باید کمتر از 2 مگا بایت باشد </font></center>";
           }
-          if (isset($_GET["errorinupload"])) {
+          if (isset($_GET["uerrorinupload"])) {
             echo "<center><font color=red> خطا در ارسال فایل رخ داده . لطفا مجدد تلاش کنید</font></center>";
           }
-          if (isset($_GET["errorintype"])) {
+          if (isset($_GET["uerrorintype"])) {
             echo "<center><font color=red> نوع فایل باید تصویر باشد</font></center>";
           }
-          if (isset($_GET["ok"])) {
+          if (isset($_GET["uok"])) {
             echo "<center><font color=green> پست با موفقیت ویرایش شد</font></center>";
           }
-          if (isset($_GET["noinsert"])) {
+          if (isset($_GET["unoinsert"])) {
             echo "<center><font color=red> خطایی در ویرایش پست رخ داده است</font></center>";
           }
           ?>
@@ -139,7 +139,7 @@
                 </td>
                 <td class="table-col tl">
                   <a href="<?php echo "../code.php?sportid=$row[id]" ?>"> <i class=" bi bi-trash3 b red"></i></a>
-                  <a href="<?php echo "edit-sport.php?postid=$row[id]" ?>"><i class="bi bi-pen b green"></i></a>
+                  <a href="<?php echo "edit-political.php?postid=$row[id]" ?>"><i class="bi bi-pen b green"></i></a>
                 </td>
               </tr>
 
