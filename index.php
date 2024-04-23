@@ -58,11 +58,13 @@
     <!-- ? end Marquee -->
     <!-- !Ads -->
     <div class="ads">
+
       <a href="#"><img src="Photo/tab1.gif" alt="" /></a>
       <a href="#"><img src="Photo/tab2.gif" alt="" /></a>
       <a href="#"><img src="Photo/tab3.gif" alt="" /></a>
       <a href="#"><img src="Photo/tab4.gif" alt="" /></a>
     </div>
+
     <!-- !End Ads -->
     <div class="mid">
       <!--? Lastnews -->

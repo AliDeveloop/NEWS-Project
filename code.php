@@ -406,5 +406,171 @@ if (isset($_POST['btneconomicupdate'])) {
 // *--------------------------------------------
 // *----- end economic
 // *--------------------------------------------
+// ?/
+// *--------------------------------------------
+// *-----  breaking news
+// *--------------------------------------------
+// !---------------------------
+// ! upload  political
+// !---------------------------
+if (isset($_POST['btnbreakingnewssend'])) {
+    if (empty($_FILES['files']) || empty($_POST['title']) || empty($_POST['content'])) {
+        header('location:panel/breakingnews.php?empty=1000');
+        exit();
+    } else {
+        $title = $_POST['title'];
+        $content = $_POST['content'];
+        $image;
+        $filename = $_FILES['files']['name'];
+        $fileext = pathinfo($filename, PATHINFO_EXTENSION);
+        $filesize = $_FILES['files']['size'];
+        $filetype = $_FILES['files']['type'];
+        $filetmp = $_FILES['files']['tmp_name'];
+        if (($filetype == 'image/png') || ($filetype == 'image/jpg') || ($filetype == 'image/jpeg') || ($filetype == 'image/svg')) {
+            $uniq = time() . uniqid(rand());
+            $path = "photo/" . $uniq . "." . $fileext;
+            if (move_uploaded_file($filetmp, $path)) {
+                $image = $path;
+            } else {
+                header('location:panel/breakingnews.php?noinsert=2000');
+                exit();
+            }
+        } else {
+            header('location:panel/breakingnews.php?errorintype=3000');
+            exit();
+        }
+        // ! sql
+        $query = "INSERT INTO `breakingnews` (`id`, `title`, `image`, `content`, `Category`) VALUES (NULL, '" . $title . "', '" . $image . "', '" . $content . "', '');";
+        $result = mysqli_query($link, $query);
+        if ($result) {
+            header('location:panel/breakingnews.php?ok=5000');
+            exit();
+        } else {
+            header('location:panel/breakingnews.php?noinsert=2000');
+            exit();
+        }
+    }
 
+
+}
+// !---------------------------
+// ! end upload  political
+// !---------------------------
+
+// !---------------------------
+// !  delete  political
+// !---------------------------
+if (isset($_GET['breakingnewsid'])) {
+    $postid = $_GET['breakingnewsid'];
+    $query = "DELETE FROM `breakingnews` WHERE `id` = '$postid';";
+    $result = mysqli_query($link, $query);
+    if ($result) {
+        header('Location:panel/breakingnews.php?delok=5000');
+        exit();
+    } else {
+        header('Location:panel/breakingnews.php?delerror=6000');
+        exit();
+    }
+}
+// !---------------------------
+// !  end delete  Sport
+// !---------------------------
+// ?
+// ? Update sport
+// ?
+if (isset($_POST['btnbreakingnewsupdate'])) {
+    if (empty($_POST['title']) || empty($_POST['content'])) {
+        header('Location:panel/political.php?uempty=1000');
+        exit();
+    } else {
+        $postid = $_POST['postid'];
+        // foreach ($_POST as $key => $value) {
+        //     echo $key . "=" . $value . "<br>";
+        // }
+        $title = $_POST['title'];
+        $content = $_POST['content'];
+        $image;
+        $filetemp = $_FILES['files']['tmp_name'];
+        if (empty($filetemp)) {
+            $query = "UPDATE `breakingnews` SET `title`='" . $title . "',`content`='" . $content . "' WHERE `breakingnews`.`id` = $postid;";
+        } else {
+            $file1 = $_FILES['files']['name'];
+            $fileext = pathinfo($file1, PATHINFO_EXTENSION);
+            $filetype = $_FILES['files']['type'];
+            $filetemp = $_FILES['files']['tmp_name'];
+            $uniq = time() . uniqid(rand());
+            $path = "photo/" . $uniq . "." . $fileext;
+            if (move_uploaded_file($filetemp, $path)) {
+                $image = $path;
+            } else {
+                header('Location:panel/breakingnews.php?uerrorinupload=3000');
+                exit();
+            }
+            $query = "UPDATE `breakingnews` SET `title`='" . $title . "',`content`='" . $content . "',`image`='" . $image . "' WHERE `breakingnews`.`id`=$postid ;";
+        }
+        $result = mysqli_query($link, $query);
+        if ($result) {
+            header('Location:panel/breakingnews.php?uok=50000');
+            exit();
+        }
+    }
+}
+// ?
+// ?end Update sport
+// ?
+
+
+// *--------------------------------------------
+// *-----  breaking news
+// *--------------------------------------------
+// !----------------------------
+// *--------------------------------------------
+// *-----   ads
+// *--------------------------------------------
+
+if (isset($_POST['btnadssend'])) {
+    if (empty($_FILES['files']) || empty($_POST['title'])) {
+        header('location:panel/ads.php?empty=1000');
+        exit();
+    } else {
+        $title = $_POST['title'];
+        $content = $_POST['content'];
+        $image;
+        $filename = $_FILES['files']['name'];
+        $fileext = pathinfo($filename, PATHINFO_EXTENSION);
+        $filesize = $_FILES['files']['size'];
+        $filetype = $_FILES['files']['type'];
+        $filetmp = $_FILES['files']['tmp_name'];
+        if (($filetype == 'image/png') || ($filetype == 'image/jpg') || ($filetype == 'image/jpeg') || ($filetype == 'image/gif')) {
+            $uniq = time() . uniqid(rand());
+            $path = "photo/" . $uniq . "." . $fileext;
+            if (move_uploaded_file($filetmp, $path)) {
+                $image = $path;
+            } else {
+                header('location:panel/ads.php?noinsert=2000');
+                exit();
+            }
+        } else {
+            header('location:panel/ads.php?errorintype=3000');
+            exit();
+        }
+        // ! sql
+        $query = "INSERT INTO `ads` (`id`, `link`, `image`) VALUES (NULL, '" . $title . "', '" . $image . "');";
+        $result = mysqli_query($link, $query);
+        if ($result) {
+            header('location:panel/ads.php?ok=5000');
+            exit();
+        } else {
+            header('location:panel/ads.php?noinsert=2000');
+            exit();
+        }
+    }
+
+
+}
+
+
+// *--------------------------------------------
+// *-----  end ads
+// *--------------------------------------------
 ?>
