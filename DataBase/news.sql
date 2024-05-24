@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Mar 29, 2024 at 11:51 PM
--- Server version: 8.0.31
--- PHP Version: 8.0.26
+-- Host: 127.0.0.1
+-- Generation Time: May 24, 2024 at 10:43 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,12 +27,25 @@ SET time_zone = "+00:00";
 -- Table structure for table `ads`
 --
 
-DROP TABLE IF EXISTS `ads`;
-CREATE TABLE IF NOT EXISTS `ads` (
-  `id` int NOT NULL,
-  `link` varchar(300) COLLATE utf8mb4_persian_ci NOT NULL,
-  `image` varchar(200) COLLATE utf8mb4_persian_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_persian_ci;
+CREATE TABLE `ads` (
+  `id` int(11) NOT NULL,
+  `link` varchar(200) NOT NULL,
+  `image` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_persian_ci;
+
+--
+-- Dumping data for table `ads`
+--
+
+INSERT INTO `ads` (`id`, `link`, `image`) VALUES
+(3, 'insta.com', 'photo/171386792145096984566278c9135f14.gif'),
+(4, 't.me', 'photo/1713868281127460759266278df96357f.gif'),
+(5, 'linkdin.com', 'photo/1713868293166194869566278e05e3a7e.gif'),
+(6, 'insta.com', 'photo/171386830136365854266278e0d7cc4c.gif'),
+(7, 'linkdin.com', 'photo/1713868318146361247766278e1e95e12.gif'),
+(8, 'varzsh3.com', 'photo/171386833513384788266278e2f76f19.gif'),
+(9, 'insta.com', 'photo/17138683673356238366278e4fdb658.gif'),
+(10, 'insta.com', 'photo/171386837383318691566278e55dfc68.gif');
 
 -- --------------------------------------------------------
 
@@ -40,22 +53,20 @@ CREATE TABLE IF NOT EXISTS `ads` (
 -- Table structure for table `breakingnews`
 --
 
-DROP TABLE IF EXISTS `breakingnews`;
-CREATE TABLE IF NOT EXISTS `breakingnews` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(200) COLLATE utf8mb4_persian_ci NOT NULL,
-  `image` varchar(200) COLLATE utf8mb4_persian_ci NOT NULL,
-  `content` text COLLATE utf8mb4_persian_ci NOT NULL,
-  `Category` varchar(20) COLLATE utf8mb4_persian_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_persian_ci;
+CREATE TABLE `breakingnews` (
+  `id` int(11) NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `image` varchar(200) NOT NULL,
+  `content` text NOT NULL,
+  `Category` varchar(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_persian_ci;
 
 --
 -- Dumping data for table `breakingnews`
 --
 
 INSERT INTO `breakingnews` (`id`, `title`, `image`, `content`, `Category`) VALUES
-(1, 'test', 'test.png', 'testcon', '');
+(2, 'قیمت دلار و یورو امروز جمعه ۱۷ فروردین۱۴۰۳', 'Photo\\17123167641820057006660fe15c2e1f1.jpg', 'قیمت هر دلار آمریکا در روز جمعه ۱۴۰۳/۱/۱۷ در بازار آزاد ۶۴ هزار و ۱۰۰ تومان تعیین شده و به فروش می رسد.\r\n\r\nهمچنین صرافی های بانک ها امروز جمعه هفدهم فروردین ۱۴۰۳ نرخ فروش دلار به مردم را – تومان اعلام کردند.\r\n\r\nاین صرافی ها دلار را از مردم با قیمت – تومان خریداری می کنند.\r\n\r\nقیمت دلار امروز جمعه ۱۴۰۳/۱/۱۷ چنده؟\r\nامروز جمعه هفدهم فروردین ۱۴۰۳ قیمت دلار کانادا نسبت به روز گذشته اندکی افزایش یافته است.\r\n\r\nهر دلار کانادا در بازار آزاد به قیمت ۴۷ هزار و ۷۵۰ تومان معامله می شود.\r\n\r\nنرخ ارز امروز جمعه ۱۷ فروردین ۱۴۰۳\r\nهمچنین قیمت امروز دلار استرالیا در بازار ارز ایران ۴۲ هزار و ۴۵۰ تومان اعلام شده است.\r\n\r\nلیست قیمت دلار امروز جمعه هفدهم فروردین ۱۴۰۳ به شرح زیر است:\r\nدلار آمریکا: ۶۴۱۰۰ تومان\r\nدلار کانادا: ۴۷۷۵۰ تومان\r\nدلار استرالیا: ۴۲۴۵۰ تومان\r\nدلار نیوزیلند: ۳۸۸۰۰ تومان\r\nدلار سنگاپور: ۴۷۷۰۰ تومان\r\nدلار هنگ کنگ: ۸۲۰۰ تومان\r\nقیمت ها بر اساس لیست اعلامی شبکه اطلاع رسانی طلا و ارز درج شده است.اهمیت قیمت دلار بر زندگی مردم ایران به قدری است که اکثریت قریب به اتفاق آنها به صورت لحظه ای نرخ این ارز را پیگیری می کنند .\r\n\r\nبر هیچکس پوشیده نیست که نوسانات نرخ دلار بیشترین تاثیر را بر روی قیمت کالاهای مصرفی دارد .\r\n\r\nقیمت روز دلار ۱۷ فروردین ۱۴۰۳ در صرافی ها\r\nبازار آزاد ارز با کوچکترین تحولات سیاسی و اقتصادی جهان دستخوش تغییر می شود؛ حال اگر یک طرف این تحولات ایران باشد، تاثیر آن بر قیمت دلار و سایر ارزها دوچندان می شود .\r\n\r\nاز آنجاییکه «دلار» در میان ایرانی ها به نوعی کالای سرمایه ای به حساب می آید، اطلاع از بروزترین قیمت دلار اهمیت بسیاری دارد .\r\n\r\nنرخ ارز ۱۷ فروردین ۱۴۰۳\r\nدلار اغلب به عنوان سرمایه پرریسک و تورم زا به شمار می رود .\r\n\r\nاین موضوع بیشتر ناشی از اجرای گسترده محرک های مالی در کشورهای دنیا است .\r\n\r\nدرست مثل قیمت طلا و سکه ، اطلاع از نوسانات بازار ارز و دلار برای کسب سود بیشتر و یا جلوگیری از ضرر مهم است .', '');
 
 -- --------------------------------------------------------
 
@@ -63,15 +74,21 @@ INSERT INTO `breakingnews` (`id`, `title`, `image`, `content`, `Category`) VALUE
 -- Table structure for table `economic`
 --
 
-DROP TABLE IF EXISTS `economic`;
-CREATE TABLE IF NOT EXISTS `economic` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(200) COLLATE utf8mb4_persian_ci NOT NULL,
-  `image` varchar(200) COLLATE utf8mb4_persian_ci NOT NULL,
-  `content` text COLLATE utf8mb4_persian_ci NOT NULL,
-  `Category` varchar(20) COLLATE utf8mb4_persian_ci NOT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE `economic` (
+  `id` int(11) NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `image` varchar(200) NOT NULL,
+  `content` text NOT NULL,
+  `Category` varchar(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_persian_ci;
+
+--
+-- Dumping data for table `economic`
+--
+
+INSERT INTO `economic` (`id`, `title`, `image`, `content`, `Category`) VALUES
+(6, 'افزایش قیمت کارخانه ای خودرو‌؛ کسی گرانی را گردن نمی‌گیرد', 'photo/171386956390009132662792fbe3a66.jpg', 'در شرایط فعلی که موضوع تغییر قیمت خودروهای داخلی مطرح است مسئولان مربوطه باید به روشنی با مردم صحبت کنند که دلیل تغییرات قیمتی چیست، نه اینکه هر بخش با شانه خالی کردن از مسئولیت خود، دیگری را متولی تصمیمات جدید خودرویی بداند.\r\nبه گزارش خبرنگار اقتصادی خبرگزاری تسنیم، اواخر فروردین ماه امسال ایران خودرو از افزایش قیمت یکی از محصولات پرتقاضای خود که از سال گذشته تولید آن حاشیه های بسیاری داشت خبرداد که براساس آن قیمت پژوپارس با دریافت مجوز 445 میلیون و 742 هزارو 300 تومان تعیین شده است و متقاضیان می بایست برای تکمیل وجه قیمت های جدید را در قراردادهای خود لحاظ کنند. \r\n\r\nالبته با صدور مجوز تغییر قیمت پژوپارس به نظر باید منتظر افزایش قیمت‌ کارخانه ای سایر انواع خودروهای داخلی بود و طی روزهای آینده قیمت جدید سایر خودروهای داخلی هم توسط شرکت ها اعلام شود.\r\n\r\nنکته مهم اینجاست وزیر صنعت در واکنش به تغییر قیمت خودرو اعلام کرده است در مورد قیمت پژو پارس شورای رقابت مسئول است و قانونا ما سیاست گذار نیستیم و ما فقط مجری سیاست‌های ابلاغی هستیم.\r\n\r\nاین در حالی که براساس مصوبه 54٣ شورای رقابت مبنای تنظیم قیمت خودرو، بر اساس ضوابط قیمت‌گذاری، مصوب هیأت تعیین و تثبیت قیمت‌ها است که توسط سازمان حمایت مصرف‌کنندگان و تولیدکنندگان محاسبه و به وزارت صمت اعلام می‌شود.\r\n\r\n طبق این مصوبه تولیدکنندگان خودرو مستندات و صورت‌های مالی خود در هزینه‌های تولید را به سازمان حمایت ارائه خواهند کرد و این سازمان نیز بر اساس صورت‌های مالی دریافت شده، درخواست خودروسازان مبنی بر به روزرسانی قیمت محصولات را به دلیل تغییرات نرخ ارز، قیمت مواد اولیه و قیمت نهاده‌های تولید، را مورد بررسی قرار داده و در نهایت طبق چارچوب مصوبات شورای رقابت، به خودروساز اجازه افزایش قیمت محصول خود را خواهد داد.\r\n\r\nالبته توکلی سخنگوی مرکزی ملی رقابت هم در این رابطه گفته است: شورای رقابت هیچ وقت قیمت گذار خودرو نبوده بلکه شورای رقابت صرفاً دستورالعمل را طراحی و آن را ابلاغ می‌کند.\r\n\r\nبه نظر می رسد در شرایط فعلی که موضوع تغییر قیمت خودروهای داخلی مطرح است مسئولان مربوطه باید به روشنی با مردم صحبت کنند که دلیل تغییرات قیمتی چیست نه اینکه هر بخش با شانه خالی کردن از مسئولیت خود، دیگری را متولی تصمیمات جدید خودرویی بداند.', ''),
+(7, 'افزایش قیمت کارخانه ای خودرو‌؛ کسی گرانی را گردن نمی‌گیرد', 'photo/17138695642069498009662792fc437e4.jpg', 'در شرایط فعلی که موضوع تغییر قیمت خودروهای داخلی مطرح است مسئولان مربوطه باید به روشنی با مردم صحبت کنند که دلیل تغییرات قیمتی چیست، نه اینکه هر بخش با شانه خالی کردن از مسئولیت خود، دیگری را متولی تصمیمات جدید خودرویی بداند.\r\nبه گزارش خبرنگار اقتصادی خبرگزاری تسنیم، اواخر فروردین ماه امسال ایران خودرو از افزایش قیمت یکی از محصولات پرتقاضای خود که از سال گذشته تولید آن حاشیه های بسیاری داشت خبرداد که براساس آن قیمت پژوپارس با دریافت مجوز 445 میلیون و 742 هزارو 300 تومان تعیین شده است و متقاضیان می بایست برای تکمیل وجه قیمت های جدید را در قراردادهای خود لحاظ کنند. \r\n\r\nالبته با صدور مجوز تغییر قیمت پژوپارس به نظر باید منتظر افزایش قیمت‌ کارخانه ای سایر انواع خودروهای داخلی بود و طی روزهای آینده قیمت جدید سایر خودروهای داخلی هم توسط شرکت ها اعلام شود.\r\n\r\nنکته مهم اینجاست وزیر صنعت در واکنش به تغییر قیمت خودرو اعلام کرده است در مورد قیمت پژو پارس شورای رقابت مسئول است و قانونا ما سیاست گذار نیستیم و ما فقط مجری سیاست‌های ابلاغی هستیم.\r\n\r\nاین در حالی که براساس مصوبه 54٣ شورای رقابت مبنای تنظیم قیمت خودرو، بر اساس ضوابط قیمت‌گذاری، مصوب هیأت تعیین و تثبیت قیمت‌ها است که توسط سازمان حمایت مصرف‌کنندگان و تولیدکنندگان محاسبه و به وزارت صمت اعلام می‌شود.\r\n\r\n طبق این مصوبه تولیدکنندگان خودرو مستندات و صورت‌های مالی خود در هزینه‌های تولید را به سازمان حمایت ارائه خواهند کرد و این سازمان نیز بر اساس صورت‌های مالی دریافت شده، درخواست خودروسازان مبنی بر به روزرسانی قیمت محصولات را به دلیل تغییرات نرخ ارز، قیمت مواد اولیه و قیمت نهاده‌های تولید، را مورد بررسی قرار داده و در نهایت طبق چارچوب مصوبات شورای رقابت، به خودروساز اجازه افزایش قیمت محصول خود را خواهد داد.\r\n\r\nالبته توکلی سخنگوی مرکزی ملی رقابت هم در این رابطه گفته است: شورای رقابت هیچ وقت قیمت گذار خودرو نبوده بلکه شورای رقابت صرفاً دستورالعمل را طراحی و آن را ابلاغ می‌کند.\r\n\r\nبه نظر می رسد در شرایط فعلی که موضوع تغییر قیمت خودروهای داخلی مطرح است مسئولان مربوطه باید به روشنی با مردم صحبت کنند که دلیل تغییرات قیمتی چیست نه اینکه هر بخش با شانه خالی کردن از مسئولیت خود، دیگری را متولی تصمیمات جدید خودرویی بداند.', '');
 
 -- --------------------------------------------------------
 
@@ -79,23 +96,22 @@ CREATE TABLE IF NOT EXISTS `economic` (
 -- Table structure for table `lastnews`
 --
 
-DROP TABLE IF EXISTS `lastnews`;
-CREATE TABLE IF NOT EXISTS `lastnews` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(200) COLLATE utf8mb4_persian_ci NOT NULL,
-  `image` varchar(200) COLLATE utf8mb4_persian_ci NOT NULL,
-  `content` text COLLATE utf8mb4_persian_ci NOT NULL,
-  `Category` varchar(20) COLLATE utf8mb4_persian_ci NOT NULL,
-  `breakingnews` varchar(20) COLLATE utf8mb4_persian_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_persian_ci;
+CREATE TABLE `lastnews` (
+  `id` int(11) NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `image` varchar(200) NOT NULL,
+  `content` text NOT NULL,
+  `Category` varchar(20) NOT NULL,
+  `breakingnews` varchar(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_persian_ci;
 
 --
 -- Dumping data for table `lastnews`
 --
 
 INSERT INTO `lastnews` (`id`, `title`, `image`, `content`, `Category`, `breakingnews`) VALUES
-(1, 'test', 'test.png', 'textcon', '', '');
+(2, 'پیروزی استقلال در شروع 1403 با پایان کدورت!', 'photo/1711821310273820519660851fec421e.jpg', 'شاگردان جواد نکونام و رضا عنایتی از ساعت 15 امروز در ورزشگاه پاس قوامین تهران در دیداری تدارکاتی مقابل هم قرار گرفتند تا بازیکنان دو تیم در شرایط مسابقه قرار بگیرند و آماده ادامه بازی‌های لیگ برتر شوند.\r\n\r\nاستقلال که روز نُهم دی‌ماه 1402 در مسابقه هفته پانزدهم و پایانی دور رفت لیگ برتر موفق به کسب پیروزی دو بر یک در ورزشگاه آزادی مقابل پیکان شده و جدا از نتیجه آن بازی، رقابتی جنجالی بین دو سرمربی با کنایه به یکدیگر اتفاق افتاده بود، امروز با پایان کدورت‌ها همراه شد.\r\nاین بازی تدارکاتی که قضاوت آن را وحید زمانی برعهده داشت و در نیمه اول بخاطر برخوردهای متعدد بازیکنان با تنش همراه بود و موجب اعتراض استقلالی‌ها ازجمله روزبه چشمی و مهرداد محمدی شد، با تساوی بدون گل در پایان 45 دقیقه نخست همراه بود.\r\n\r\nنکونام و عنایتی تقریبا نفرات اصلی خود را در نیمه اول استفاده کردند، اما در شروع نیمه دوم سرمربی پیکان تصمیم گرفت تمام 11 بازیکن خود را تغییر بدهد، اما آبی پوشان با تغییرات کمتر دوباره در زمین حاضر شدند ولی در لحظات پایانی تقریبا همه ترکیب استقلال نیز با جابه‌جایی همراه بود که در آن مقطع توانستند به گل برسند.\r\n\r\nبا توجه به تعطیلات نوروزی و برگزاری بازی در اکباتان که فضای خوبی برای حضور تماشاگران دارد، هواداران زیادی از استقلال این مسابقه را از نزدیک تماشا کردند و مشغول تشویق تیم خود بودند.\r\n\r\nاستقلال در نیمه دوم با فشار بیشتر روی دروازه پیکان موفق شد در دقایق پایانی توسط جعفر سلمانی به گل برسد و دیدار تدارکاتی برابر خودروسازان را با پیروزی یک بر صفر پشت سر بگذارد.', '', ''),
+(3, ' توضیحات صدیقی درباره زمین خواری', 'Photo\\17118215481520103446660852ec45611.jpg', 'کاظم صدیقی درباره اتفاقات اخیر رخ‌داده پیرامون حوزه علمیه ازگل توضیحاتی ارائه داد که اهم آن را می‌خوانید و در ادامه فیلم این مصاحبه را مشاهده خواهید کرد.\r\n\r\n*حوزه علمیه امام خمینی(ره) لازم داشت یک مرحله پیش‌حوزوی داشته باشد و تصمیم گرفتیم مؤسسه‌ای ثبت کنیم.\r\n\r\n* در تأسیس مؤسسه غفلتی صورت گرفت که این غلفت از ناحیه من بود، نباید اعتماد می‌کردم.\r\n\r\n* از اعضای مؤسسه آگاهی نداشتم و از وقوع غفلت در محضر خداوند استغفار می‌کنم و از مردم با همه وجودم عذرخواهی می‌کنم.\r\n\r\n* اموال حوزه با تأسیس مؤسسه جابه‌جا نشده است.\r\n\r\n* مؤسسه منحل و ملک مزبور رسماً به حوزه منتقل شده و به ثبت رسمی رسیده است؛ در افراد تغییراتی ایجاد شد.\r\n\r\n* توقع دارم در نظارت اگر به موردی رسیدند که از نظر قانونی جای مؤاخذه وجود دارد؛ اعم از آشیانان و‌ غیرآشنایان در اجرای قانون حتماً به حساب اشخاص رسیدگی شود.', '', '');
 
 -- --------------------------------------------------------
 
@@ -103,15 +119,20 @@ INSERT INTO `lastnews` (`id`, `title`, `image`, `content`, `Category`, `breaking
 -- Table structure for table `political`
 --
 
-DROP TABLE IF EXISTS `political`;
-CREATE TABLE IF NOT EXISTS `political` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(200) COLLATE utf8mb4_persian_ci NOT NULL,
-  `image` varchar(200) COLLATE utf8mb4_persian_ci NOT NULL,
-  `content` text COLLATE utf8mb4_persian_ci NOT NULL,
-  `Category` varchar(20) COLLATE utf8mb4_persian_ci NOT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE `political` (
+  `id` int(11) NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `image` varchar(200) NOT NULL,
+  `content` text NOT NULL,
+  `Category` varchar(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_persian_ci;
+
+--
+-- Dumping data for table `political`
+--
+
+INSERT INTO `political` (`id`, `title`, `image`, `content`, `Category`) VALUES
+(1, ' توضیحات صدیقی درباره زمین خواری', 'Photo\\17118215481520103446660852ec45611.jpg', 'کاظم صدیقی درباره اتفاقات اخیر رخ‌داده پیرامون حوزه علمیه ازگل توضیحاتی ارائه داد که اهم آن را می‌خوانید و در ادامه فیلم این مصاحبه را مشاهده خواهید کرد.\r\n\r\n*حوزه علمیه امام خمینی(ره) لازم داشت یک مرحله پیش‌حوزوی داشته باشد و تصمیم گرفتیم مؤسسه‌ای ثبت کنیم.\r\n\r\n* در تأسیس مؤسسه غفلتی صورت گرفت که این غلفت از ناحیه من بود، نباید اعتماد می‌کردم.\r\n\r\n* از اعضای مؤسسه آگاهی نداشتم و از وقوع غفلت در محضر خداوند استغفار می‌کنم و از مردم با همه وجودم عذرخواهی می‌کنم.\r\n\r\n* اموال حوزه با تأسیس مؤسسه جابه‌جا نشده است.\r\n\r\n* مؤسسه منحل و ملک مزبور رسماً به حوزه منتقل شده و به ثبت رسمی رسیده است؛ در افراد تغییراتی ایجاد شد.\r\n\r\n* توقع دارم در نظارت اگر به موردی رسیدند که از نظر قانونی جای مؤاخذه وجود دارد؛ اعم از آشیانان و‌ غیرآشنایان در اجرای قانون حتماً به حساب اشخاص رسیدگی شود.', '');
 
 -- --------------------------------------------------------
 
@@ -119,15 +140,21 @@ CREATE TABLE IF NOT EXISTS `political` (
 -- Table structure for table `sport`
 --
 
-DROP TABLE IF EXISTS `sport`;
-CREATE TABLE IF NOT EXISTS `sport` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(200) COLLATE utf8mb4_persian_ci NOT NULL,
-  `image` varchar(200) COLLATE utf8mb4_persian_ci NOT NULL,
-  `content` text COLLATE utf8mb4_persian_ci NOT NULL,
-  `Category` varchar(20) COLLATE utf8mb4_persian_ci NOT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE `sport` (
+  `id` int(11) NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `image` varchar(200) NOT NULL,
+  `content` text NOT NULL,
+  `Category` varchar(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_persian_ci;
+
+--
+-- Dumping data for table `sport`
+--
+
+INSERT INTO `sport` (`id`, `title`, `image`, `content`, `Category`) VALUES
+(10, 'خمس: یک لحظه هم در ایران احساس عدم امنیت نداشتم/غرامت نگرفتم', 'photo/1713869063598891113662791070f941.jpg', 'سرمربی پیشین تیم فوتبال تراکتور ضمن بیان اینکه حتی یک لحظه هم در ایران احساس عدم امنیت نداشته است، گفت: تراکتور و هوادارانش همیشه در قلب من هستند.\r\nبه گزارش خبرنگار ورزشی خبرگزاری تسنیم، پاکو خمس، سرمربی اسپانیایی سرانجام هفته گذشته به حضور 495 روزه خود در تراکتور پایان داد و رسماً از این تیم جدا شد. خمس که دوران متفاوتی را در تراکتور پشت سر گذاشت در گفت‌وگو با خبرگزاری تسنیم درباره آنچه در این مدت تجربه کرد به صحبت پرداخت.\r\n* از تجربه زندگی و کار در ایران راضی بودید؟\r\n\r\nتجربه فوق العاده مثبتی در ایران داشتم، چه به لحاظ کاری و چه زندگی. قبل از اینکه ایران را ببینم تصویر خیلی مبهمی از این کشور داشتم ولی برایم تجربه فوق العاده و فراموش نشدنی شد.\r\n\r\n* رفتار مردم تبریز با شما چگونه بود؟\r\n\r\nاز مهمان‌نوازی بی‌نظیر مردم تبریز بسیار تشکر می‌کنم. رفتار آنها با ما فوق‌العاده بود؛ پُر از عشق و احترام. این خیلی مهم بود، چون احساس غربت نمی‌کردیم. برای ما خداحافظی خیلی سخت بود چرا که یک سال و نیم پُر از محبت داشتیم و جمع شدن اشک در چشم  من و دستیارانم و مسئولان تیم و اطرافیان مشهود بود.\r\n\r\n* این سؤال‌ها را از این بابت مطرح کردیم که برخی رسانه‌های خارجی اعلام کردند شما حس مثبت و امنیت در تبریز نداشتید.\r\n\r\nحتی یک لحظه حس عدم امنیت نداشتم. همیشه جو تبریز و ایران را امن می‌دیدم و از این نظر بسیار خوشحال بودم. تنها دغدغه من نگرانی خانواده‌ام و مسائل خانوادگی بود.\r\n* دوباره به ایران بازخواهید گشت؟\r\n\r\nمعلوم است که دوست دارم برگردم. ایران همیشه در ذهن من است. ولی صادقانه بگویم فکر نمی‌کنم در تیمی غیر از تراکتور بخواهم مربیگری کنم. شاید چون که  بیش از حد با باشگاه و دوستم آقای زنوزی و مدیر باشگاه و هواداران بی‌نظیر و بی شمار تراکتور از نظر عاطفی درگیر بوده و هستم. آقای زنوزی همانند یکی از اعضای خانواده‌ام بود.\r\n\r\n* حقیقت دارد که تنها حقوق ماهانه‌تان تا زمان فسخ قرارداد را دریافت کرده و هیچ غرامتی نگرفته‌اید؟\r\n\r\nبله فقط حقوقم تا روزی که کار کردم را گرفتم و هیچ غرامتی دریافت نکردم.\r\n\r\n* چه پیامی برای هوادار‌ان در ایران و البته تراکتوری‌ها دارید؟\r\n\r\nتراکتور و هوادارانش همیشه در قلب من هستند. صادقانه بگویم حق فوتبال ایران بهترین‌هاست. باید همه در کنار هم بجنگند تا لیگ ایران را تبدیل به یکی از برترین لیگ‌ها کنند؛ چرا که هم ظرفیتش موجود است هم حق فوتبال ایران و هوادارانش است.', ''),
+(11, 'حضور حسین حسینی در دادسرای فرهنگ و رسانه با شکایت فراجا', 'photo/17138691573224635376627916567bac.jpg', 'کاپیتان استقلال به دنبال اتفاقات بازی با آلومینیوم اراک در هفته بیست‌ودوم لیگ برتر با شکایت فرماندهی انتظامی کشور (فراجا) به دادسرای فرهنگ و رسانه رفت.\r\nبه گزارش خبرنگار ورزشی خبرگزاری تسنیم، به دنبال اتفاقات پس از پایان دیدار تیم‌های آلومینیوم اراک و استقلال، سید حسین حسینی از سوی کمیته انضباطی فدراسیون فوتبال به 300 میلیون تومان جریمه و یک جلسه تعلیقی محکوم شد.\r\n\r\nدر پایان این دیدار یک هوادار خانم وارد زمین شد و حسینی ضمن در آغوش گرفتن او با مأموران نیروی انتظامی درگیری پیدا کرد.\r\nکاپیتان استقلال پس از دیدار با شمس آذر قزوین نیز صحبت‌هایی در رابطه با حکم کمیته انضباطی مطرح کرد که با واکنش این کمیته و حکم جدید این کمیته روبه‌رو شد. بدین ترتیب یک جلسه محرومیت تعلیقی‌ حسینی اجرا خواهد شد و او در بازی با تراکتور تبریز در هفته بیست‌وپنجم محروم خواهد بود.\r\n\r\nدر تازه‌ترین اتفاق، فرماندهی انتظامی کشور (فراجا) از دروازه‌بان استقلال به دادسرای فرهنگ و رسانه شکایت کرده و دروازه‌بان ملی‌پوش آبی‌پوشان در دادگاه حضور یافت. حسینی در دادسرا توضیح داد صحبتی یا اقدامی علیه فرماندهی انتظامی نکرده و تنها برای مراقبت از بانوی هوادار دنبال آرام کردن فضا بوده است.\r\n\r\nوکیل باشگاه استقلال نیز بابت این پرونده در دادسرا حضور پیدا کرد.', '');
 
 -- --------------------------------------------------------
 
@@ -135,14 +162,12 @@ CREATE TABLE IF NOT EXISTS `sport` (
 -- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(200) COLLATE utf8mb4_persian_ci NOT NULL,
-  `email` varchar(200) COLLATE utf8mb4_persian_ci NOT NULL,
-  `password` varchar(200) COLLATE utf8mb4_persian_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_persian_ci;
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `password` varchar(200) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_persian_ci;
 
 --
 -- Dumping data for table `user`
@@ -152,6 +177,98 @@ INSERT INTO `user` (`id`, `name`, `email`, `password`) VALUES
 (1, 'علی ذکریان', 'Ali@gmail.com', 'ali'),
 (2, 'محمد رضایی', 'mamad@gmail.com', 'mamad'),
 (3, 'علی', 'ali.zekrian016@gmail.com', 'Ali999');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `ads`
+--
+ALTER TABLE `ads`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `breakingnews`
+--
+ALTER TABLE `breakingnews`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `economic`
+--
+ALTER TABLE `economic`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `lastnews`
+--
+ALTER TABLE `lastnews`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `political`
+--
+ALTER TABLE `political`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sport`
+--
+ALTER TABLE `sport`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `ads`
+--
+ALTER TABLE `ads`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `breakingnews`
+--
+ALTER TABLE `breakingnews`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `economic`
+--
+ALTER TABLE `economic`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `lastnews`
+--
+ALTER TABLE `lastnews`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `political`
+--
+ALTER TABLE `political`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `sport`
+--
+ALTER TABLE `sport`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

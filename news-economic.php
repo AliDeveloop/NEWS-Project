@@ -62,7 +62,8 @@
                     $result = mysqli_query($link, $query);
                     while ($row = mysqli_fetch_array($result)) {
                         ?>
-                        <img src="<?php echo $row['image']; ?>" alt="" class="last-photo news-photo" />
+                        <img src="<?php echo $row['image']; ?>" alt="" class="last-photo news-photo" height="50px"
+                            width="50px" />
                         <div class="l">
                             <h2 class="last-titr news-titr">
                                 <?php echo $row['title']; ?>

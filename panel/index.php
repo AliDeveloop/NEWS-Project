@@ -40,10 +40,10 @@ if (!isset($_COOKIE["admin"])) {
         </div>
         <h2 class="titr panel-titr">دسترسی سریع</h2>
         <div class="panel-box-d">
-          <a href="new-news.php" class="d-box">خبر جدید </a>
-          <a href="manage-news.php" class="d-box">مشاهده اخبار </a>
-          <a href="manage-news.php" class="d-box">ویرایش خبر </a>
-          <a href="new-ads.php" class="d-box"> تبلیغات </a>
+          <a href="breakingnews.php" class="d-box">خبر فوری </a>
+          <a href="sport.php" class="d-box"> خبر ورزشی </a>
+          <a href="economic.php" class="d-box"> خبر اقتصادی </a>
+          <a href="political.php" class="d-box"> خبر سیاسی </a>
 
           <a href="../index.php" class="d-box"> صفحه اصلی </a>
           <a href="<?php echo '../code.php?exit=200'; ?>" class="d-box"> خروج </a>
